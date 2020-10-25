@@ -58,8 +58,11 @@ fn main() {
         match n {
             Number { value: 99, .. } => println!("is 99"),
             Number { odd: true, value } => println!("{} is odd", value),
-            Number { odd: false, value:55 } => println!("55 is odd"),
-            Number { odd: false, value} => println!("{} is odd", value),
+            Number {
+                odd: false,
+                value: 55,
+            } => println!("55 is odd"),
+            Number { odd: false, value } => println!("{} is odd", value),
         }
     }
 

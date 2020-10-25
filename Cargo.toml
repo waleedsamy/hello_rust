@@ -6,3 +6,13 @@ edition = "2018"
 
 [dependencies]
 rand = "0.4.0"
+
+[[bin]]
+name = "main2"
+test = false
+bench = false
+
+[[bin]]
+name = "rectangle"
+test = false
+bench = false
