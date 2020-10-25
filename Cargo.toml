@@ -8,6 +8,11 @@ edition = "2018"
 rand = "0.4.0"
 
 [[bin]]
+name = "main1"
+test = false
+bench = false
+
+[[bin]]
 name = "main2"
 test = false
 bench = false
