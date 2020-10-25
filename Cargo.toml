@@ -3,9 +3,15 @@ name = "hello_rust"
 version = "0.1.0"
 authors = ["Waleed Samy <waleedsamygd@protonmail.com>"]
 edition = "2018"
+default-run = "hello_rust"
 
 [dependencies]
 rand = "0.4.0"
+
+[[bin]]
+name = "guess"
+test = false
+bench = false
 
 [[bin]]
 name = "main1"
