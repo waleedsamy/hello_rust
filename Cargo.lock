@@ -16,9 +16,9 @@ dependencies = [
 
 [[package]]
 name = "libc"
-version = "0.2.61"
+version = "0.2.80"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c665266eb592905e8503ba3403020f4b8794d26263f412ca33171600eca9a6fa"
+checksum = "4d58d1b70b004888f764dfbf6a26a3b0342a1632d33968e4a179d8011c760614"
 
 [[package]]
 name = "rand"
