@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 #[derive(Debug)]
 struct Point<T, U> {
     x: T,

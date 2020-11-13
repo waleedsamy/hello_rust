@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::fmt::{Debug, Display, Formatter, Result};
 pub trait Summary {
     fn summarize_author(&self) -> String;
@@ -101,11 +103,11 @@ fn main() {
     let p = Pair { x: 10, y: 10 };
     p.cmp_display();
 
-    let p = Pair {
+    let _p = Pair {
         y: tweet_1.clone(),
         x: tweet_1,
     };
-    // p.cmp_display(); // Tweet doesn't satisfy `Tweet: std::cmp::PartialOrd` so cmp_display not available
+    // _p.cmp_display(); // Tweet doesn't satisfy `Tweet: std::cmp::PartialOrd` so cmp_display not available
 }
 
 fn notify(summeriable: &(impl Summary + Display)) {
@@ -116,15 +118,15 @@ fn notify_1<T: Summary + Display>(summeriable: &T) {
     println!("notify_1 -> {}", summeriable.summarize());
 }
 
-fn some_fun_1<T: Display + Clone, U: Debug + Clone>(t: T, u: U) {}
-fn som_fun_2<T, U>(t: T, u: U)
+fn some_fun_1<T: Display + Clone, U: Debug + Clone>(_t: T, _u: U) {}
+fn som_fun_2<T, U>(_t: T, _u: U)
 where
     T: Display + Clone,
     U: Debug + Clone,
 {
 }
 
-fn returns_summarizable(b: bool) -> impl Summary {
+fn returns_summarizable(_b: bool) -> impl Summary {
     Tweet {
         username: "AP".to_string(),
         content:"Austria’s top security official says five people have died and 17 others were wounded in the shooting.".to_string(),
@@ -133,6 +135,7 @@ fn returns_summarizable(b: bool) -> impl Summary {
     }
 }
 
+#[cfg(test)]
 mod tests {
     use crate::{Summary, Tweet};
     #[test]

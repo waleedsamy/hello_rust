@@ -5,7 +5,7 @@ use std::io;
 // use std::cmp::min;
 // use std::cmp::max;
 
-use std::{cmp::max, cmp::min};
+use std::cmp::min;
 
 fn main() {
     let l: i32 = min(6, 88);

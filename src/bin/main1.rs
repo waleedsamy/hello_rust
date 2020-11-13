@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 const MAX_POINT: u32 = 1_000;
 
 #[derive(Debug)]
@@ -66,7 +68,7 @@ fn main() {
         println!("elem at index {} is {}", index, x[index]);
         index += 1;
     }
-    let x = 1..5;
+    let _x = 1..5;
     for e in (1..5).rev() {
         println!("elem {} is", e);
     }
@@ -81,8 +83,8 @@ fn main() {
         V6(String),
     }
 
-    let home: IPAddrKind = IPAddrKind::V4(172, 0, 0, 1);
-    let loopback = IPAddrKind::V6(String::from("::1"));
+    let _home: IPAddrKind = IPAddrKind::V4(172, 0, 0, 1);
+    let _loopback = IPAddrKind::V6(String::from("::1"));
 
     enum Message {
         Quit,
@@ -95,10 +97,10 @@ fn main() {
         fn call(&self) {}
     }
 
-    let x = Message::Quit;
-    let x = Message::Move { x: 10, y: 11 };
-    let x = Message::Write(String::from("abc"));
-    let x = Message::ChangeColur(1, 2, 3);
+    let _x = Message::Quit;
+    let _x = Message::Move { x: 10, y: 11 };
+    let _x = Message::Write(String::from("abc"));
+    let _x = Message::ChangeColur(1, 2, 3);
 
     let x = Coin::Penny;
     println!("coin {:?} has {}", x, coin_to_u8(&x));
