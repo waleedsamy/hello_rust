@@ -1,18 +1,27 @@
 #![allow(dead_code)]
+#![allow(unused_imports)]
+
+use std::cell::RefCell;
 
 trait Reporter {
     fn send(&self, message: &str) {
         println!("~~{}~~", message)
     }
 }
-struct RateLimiter<'a> {
-    reporter: &'a dyn Reporter,
+struct RateLimiter<'a, T>
+where
+    T: Reporter,
+{
+    reporter: &'a T,
     max: i32,
     value: i32,
 }
 
-impl<'a> RateLimiter<'a> {
-    fn new(reporter: &'a dyn Reporter, max: i32) -> Self {
+impl<'a, T> RateLimiter<'a, T>
+where
+    T: Reporter,
+{
+    fn new(reporter: &'a T, max: i32) -> Self {
         RateLimiter {
             reporter: reporter,
             max: max,
@@ -38,31 +47,33 @@ mod tests {
     use super::*;
 
     struct MockReporter {
-        messages: Vec<String>,
+        messages: RefCell<Vec<String>>,
     }
 
     impl MockReporter {
         fn new() -> Self {
-            MockReporter { messages: vec![] }
+            MockReporter {
+                messages: RefCell::new(vec![]),
+            }
         }
     }
 
     impl Reporter for MockReporter {
         fn send(&self, message: &str) {
-            self.messages.push(message.to_string());
+            self.messages.borrow_mut().push(message.to_string())
         }
     }
 
     #[test]
     fn send_message_when_reach_75_percent() {
-        let mockReporter = MockReporter::new();
+        let mock_reporter = MockReporter::new();
         let mut limiter = RateLimiter {
-            reporter: &mockReporter,
+            reporter: &mock_reporter,
             max: 100,
             value: 75,
         };
         limiter.add_one();
 
-        assert_eq!(1, mockReporter.messages.len());
+        assert_eq!(1, mock_reporter.messages.borrow().len());
     }
 }

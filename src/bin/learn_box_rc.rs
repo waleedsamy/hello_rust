@@ -4,6 +4,7 @@ enum List<T> {
     Cons(T, Rc<List<T>>),
     Nil,
 }
+
 fn main() {
     use self::List::{Cons, Nil};
 

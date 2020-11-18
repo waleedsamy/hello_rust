@@ -15,12 +15,12 @@ test = false
 bench = false
 
 [[bin]]
-name = "main1"
+name = "learn_enum"
 test = false
 bench = false
 
 [[bin]]
-name = "main2"
+name = "learn_struct"
 test = false
 bench = false
 
