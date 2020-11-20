@@ -15,15 +15,24 @@ fn main() {
     println!("Got {}!", received);
 
     let (tx, rx) = mpsc::channel();
+    let tx_1 = mpsc::Sender::clone(&tx);
     thread::spawn(move || {
         for i in 1..10 {
-            let val = String::from(format!("Hello {}", i));
+            let val = String::from(format!("T1: Hello {}", i));
             tx.send(val).unwrap(); // send take ownership of val
             thread::sleep(time::Duration::from_secs(1))
         }
     });
 
+    thread::spawn(move || {
+        for i in 1..10 {
+            let val = String::from(format!("T2: Hello {}", i));
+            tx_1.send(val).unwrap(); // send take ownership of val
+            thread::sleep(time::Duration::from_secs(1))
+        }
+    });
+
     for v in rx {
-        println!("Got {}!", v);
+        println!("M: Got {}!", v);
     }
 }
