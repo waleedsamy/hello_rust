@@ -1,5 +1,5 @@
-use hello;
+use hello::greetings;
 #[test]
 fn hello_integration_test() {
-    assert_eq!("Hello! User", hello::greeting("User"))
+    assert_eq!("Hello! User", greetings::greeting("User"))
 }
