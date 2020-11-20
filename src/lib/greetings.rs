@@ -1,13 +1,13 @@
 #![allow(dead_code)]
 
 #[derive(Debug)]
-struct Rectangle {
-    width: i32,
-    hight: i32,
+pub struct Rectangle {
+    pub width: i32,
+    pub hight: i32,
 }
 
 impl Rectangle {
-    fn can_hold(&self, other: &Rectangle) -> bool {
+    pub fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.hight > other.hight
     }
 }
@@ -20,12 +20,12 @@ pub fn greeting(name: &str) -> String {
 }
 
 #[allow(dead_code)]
-struct Guess {
+pub struct Guess {
     value: i32,
 }
 
 impl Guess {
-    fn new(i: i32) -> Guess {
+    pub fn new(i: i32) -> Guess {
         if i < 1 {
             panic!("Guess must be more than 1, got {}", i);
         } else if i > 100 {
@@ -35,7 +35,7 @@ impl Guess {
         }
     }
 
-    fn maybe_new(i: i32) -> Result<Guess, String> {
+    pub fn maybe_new(i: i32) -> Result<Guess, String> {
         if i < 1 {
             Err(format!("Guess must be more than 1, got {}", i))
         } else if i > 100 {

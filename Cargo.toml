@@ -31,4 +31,4 @@ bench = false
 
 [lib]
 name = "hello"
-path = "src/lib.rs"
+path = "src/lib/mod.rs"
