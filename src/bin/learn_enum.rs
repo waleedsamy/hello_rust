@@ -18,6 +18,29 @@ struct User {
 
 struct Color(u32, u32, u32);
 
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColur(Color),
+}
+
+impl Message {
+    fn call(&self) {}
+
+    fn print(msg: &Message) {
+        match msg {
+            Message::Quit => println!("message: quit"),
+            Message::Move { x, y } => println!("message: move {}, {}", x, y),
+            Message::Write(x) => println!("message: write {}", x),
+            Message::ChangeColur(Color(1, 2, 3)) => println!("message: change color 1-2-3"),
+            Message::ChangeColur(Color(x, y, z)) => {
+                println!("message: change color {}, {}, {}", x, y, z)
+            }
+        }
+    }
+}
+
 fn main() {
     let mut x = 10;
     println!("x is {}", x);
@@ -86,21 +109,16 @@ fn main() {
     let _home: IPAddrKind = IPAddrKind::V4(172, 0, 0, 1);
     let _loopback = IPAddrKind::V6(String::from("::1"));
 
-    enum Message {
-        Quit,
-        Move { x: i32, y: i32 },
-        Write(String),
-        ChangeColur(i32, i32, i32),
-    }
-
-    impl Message {
-        fn call(&self) {}
-    }
-
-    let _x = Message::Quit;
-    let _x = Message::Move { x: 10, y: 11 };
-    let _x = Message::Write(String::from("abc"));
-    let _x = Message::ChangeColur(1, 2, 3);
+    let x = Message::Quit;
+    Message::print(&x);
+    let x = Message::Move { x: 10, y: 11 };
+    Message::print(&x);
+    let x = Message::Write(String::from("abc"));
+    Message::print(&x);
+    let x = Message::ChangeColur(Color(1, 2, 3));
+    Message::print(&x);
+    let x = Message::ChangeColur(Color(111, 222, 333));
+    Message::print(&x);
 
     let x = Coin::Penny;
     println!("coin {:?} has {}", x, coin_to_u8(&x));
