@@ -24,11 +24,6 @@ name = "learn_struct"
 test = false
 bench = false
 
-[[bin]]
-name = "rectangle"
-test = false
-bench = false
-
 [lib]
 name = "hello"
 path = "src/lib/mod.rs"
