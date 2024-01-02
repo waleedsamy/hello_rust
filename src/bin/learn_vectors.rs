@@ -39,7 +39,7 @@ fn main() {
         Int(i32),
         Float(f32),
         Text(String),
-    };
+    }
 
     let _v: Vec<SpreadSheet> = vec![
         SpreadSheet::Float(33.0),

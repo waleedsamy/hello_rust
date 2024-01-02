@@ -14,6 +14,7 @@ impl Screen {
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 struct Button {
     text: String,
 }
@@ -24,6 +25,7 @@ impl Draw for Button {
 }
 
 #[derive(Debug)]
+#[allow(dead_code)]
 struct TextBox {
     text: String,
 }
